@@ -1,1 +1,1 @@
-# LUT_full_stack
+# Full stack project using MEAN-stack
