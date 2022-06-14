@@ -1,0 +1,76 @@
+db.posts.insert({
+    title: 'Post one', 
+    body: 'Body of post one',
+    categoy: 'News',
+    likes: 4, 
+    tags: ['news', 'events'], 
+    user:{name:'John', status:'author'},
+    date: Date()
+})
+db.posts.insertMany([
+    {
+    title: 'Post two', 
+    body: 'Body of post two',
+    categoy: 'Technology',
+    date: Date()
+},{
+    title: 'Post three', 
+    body: 'Body of post three',
+    categoy: 'News',
+    date: Date()
+},{
+    title: 'Post four', 
+    body: 'Body of post four',
+    categoy: 'Entertainment',
+    date: Date()
+}])
+
+
+db.posts.update({title: 'Post two'}, 
+{
+    title: 'Post  two',
+    body: 'New post 2 body', 
+    date: Date()
+
+}, 
+{
+    upsert: true
+}
+)
+db.posts.update({title: 'Post two'}, 
+{
+    $set:{
+        categoy: 'Technology'
+    }
+
+}
+
+)
+db.posts.update({title: 'Post one'}, 
+{
+    $set:{
+        comments: [
+            {
+                user: 'Mary Williams',
+                body: 'Comment one',
+                date: Date()
+            },
+            {
+                user: 'Harry White', 
+                body: 'Comment two',
+                date:Date()
+            }
+        ]
+    }
+
+}
+
+)
+
+db.posts.find({
+    comments:{
+        $elemMatch{
+            user:  'Mary Williams'
+        }
+    }
+})
