@@ -1,10 +1,10 @@
 const express = require("express");
 const path = require("path");
-const bodyParses = require("body-parser");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 const passport = require("passport");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+const session = require("express-session");
 const config = require("./config/database");
 
 // connect to database
@@ -32,8 +32,14 @@ app.use(cors()); //middleware for cross origin resources
 app.use(express.static(path.join(__dirname, "public")));
 
 // body parses middleware
-
 app.use(bodyParser.json());
+
+//passport middleware
+app.use(session({ secret: config.secret }));
+
+app.use(passport.initialize());
+app.use(passport.session());
+require("./config/passport")(passport);
 
 app.use("/users", users);
 
