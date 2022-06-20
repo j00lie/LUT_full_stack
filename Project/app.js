@@ -25,10 +25,11 @@ const app = express();
 const users = require("./routes/users");
 
 const port = 3000;
-app.use(cors()); //middleware for cross origin resources
+
+//middleware for cross origin resources
+app.use(cors());
 
 //set static folder
-
 app.use(express.static(path.join(__dirname, "public")));
 
 // body parses middleware
