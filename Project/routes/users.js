@@ -16,31 +16,31 @@ router.post("/register", (req, res, next) => {
 
   User.addUser(newUser, (err, user) => {
     if (err) {
-      res.json({ succes: false, msg: "Failed to register user" });
+      res.json({ success: false, msg: "Failed to register user" });
     } else {
-      res.json({ succes: true, msg: "User registered" });
+      res.json({ success: true, msg: "User registered" });
     }
   });
 });
-//Authenticate
+// Authenticate
 router.post("/authenticate", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
 
   User.getUserByUsername(username, (err, user) => {
     if (err) throw err;
-
     if (!user) {
-      return res.json({ succes: false, msg: "User not found" });
+      return res.json({ success: false, msg: "User not found" });
     }
+
     User.comparePassword(password, user.password, (err, isMatch) => {
       if (err) throw err;
       if (isMatch) {
         const token = jwt.sign({ data: user }, config.secret, {
-          expiresIn: 604800, // week in seconds
+          expiresIn: 604800, // 1 week
         });
         res.json({
-          succes: true,
+          success: true,
           token: "JWT " + token,
           user: {
             id: user._id,
@@ -50,12 +50,13 @@ router.post("/authenticate", (req, res, next) => {
           },
         });
       } else {
-        return res.json({ succes: false, msg: "Wrong password" });
+        return res.json({ success: false, msg: "Wrong password" });
       }
     });
   });
 });
-//Profile
+
+// Profile
 router.get(
   "/profile",
   passport.authenticate("jwt", { session: false }),
