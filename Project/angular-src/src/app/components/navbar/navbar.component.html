@@ -23,6 +23,27 @@
         </li>
         <li
           class="nav-item"
+          *ngIf="authService.loggedIn()"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link" [routerLink]="['/profile']"
+            >Profile <span></span
+          ></a>
+        </li>
+        <li
+          class="nav-item"
+          *ngIf="authService.loggedIn()"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link" [routerLink]="['/dashboard']"
+            >Dashboard <span></span
+          ></a>
+        </li>
+        <li
+          class="nav-item"
+          *ngIf="authService.loggedOut()"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
@@ -30,13 +51,20 @@
         </li>
         <li
           class="nav-item"
+          *ngIf="authService.loggedOut()"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
           <a class="nav-link" [routerLink]="['/register']">Register</a>
         </li>
         <li>
-          <a class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>
+          <a
+            class="nav-link"
+            *ngIf="authService.loggedIn()"
+            (click)="onLogoutClick()"
+            href="#"
+            >Logout</a
+          >
         </li>
       </ul>
     </div>
