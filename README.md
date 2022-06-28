@@ -10,5 +10,5 @@
   - Angular
 
 ### Running the project 
-- Copy repository
+- Copy [repository](https://github.com/j00lie/LUT_full_stack/tree/main/Project)
 - Run locally with `npm start`
