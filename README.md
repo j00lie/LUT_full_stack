@@ -1,6 +1,6 @@
 # Full stack project using MEAN-stack
 
-## including
+## Including
 
 - Backend:
   - REST API with Node.js / Express
@@ -8,3 +8,5 @@
   - MongoDB and Mongoose for ODM
 - Frontend:
   - Angular
+
+### Run the project locally with `npm start`
