@@ -9,4 +9,6 @@
 - Frontend:
   - Angular
 
-### Run the project locally with `npm start`
+### Running the project 
+- Copy repository
+- Run locally with `npm start`
