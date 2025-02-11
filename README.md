@@ -15,4 +15,4 @@
 - [Project running](https://lut-my.sharepoint.com/:v:/g/personal/joonas_liedes_student_lut_fi/EZXJ4wT4WhNDtnKum8fYaJMB6aJjybjH-JCM2ix0TcsjFA?e=QuSHwz)
 
 
-#### Author Joonas Liedes
+### Author Joonas Liedes
